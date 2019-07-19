@@ -36,6 +36,8 @@ function handleError(err, res) {
 }
 
 // Look for the results in the database
+// We can use this function as a way to pass the ability to lookup
+// any resource from our sql database
 function lookup(options) {
   const SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
   const values = [options.location];
@@ -51,6 +53,8 @@ function lookup(options) {
     .catch(error => handleError(error));
 }
 
+// Much like lookup, this function lets us DELETE resources 
+// for any resource.
 function deleteByLocationId(table, city) {
   const SQL = `DELETE from ${table} WHERE location_id=${city};`;
   return client.query(SQL);
@@ -167,6 +171,8 @@ function getWeather(request, response) {
 
     location: request.query.data.id,
 
+    // now we are checking if the created_at table values are invalid,
+    // based on a timeour constant we defined above.
     cacheHit: function (result) {
       let ageOfResults = (Date.now() - result.rows[0].created_at);
       if (ageOfResults > timeouts.weathers) {
