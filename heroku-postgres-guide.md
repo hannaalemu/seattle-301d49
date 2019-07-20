@@ -23,8 +23,8 @@ $ psql -d city_explorer -f path/to/schema.sql
 <br/>
 
 
-## 4.  Push your local datbase Schema to your provision:
+## 4.  Push your local database Schema to your provision:
 ```bash
 $ heroku pg:push city_explorer DATABASE_URL --app your-app-name
 ```
-> *You'll see a long list of heroku output strings.  When This is done run: <br/>`$ heroku logs --tail` <br/> to verify your config vars and `pg:push` were successful.
+> *You'll see a long list of heroku output strings.  When This is done run:* <br/>`$ heroku logs --tail` <br/> to verify your config vars and `pg:push` were successful.
