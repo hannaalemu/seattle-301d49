@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <% tasks.forEach(task => {%>
+  <h1><%= task.title %></h1>
+  <p><%= task.description %></p>
+  <p><%= task.category %></p>
+  <p><%= task.status %></p>
+  <form action="<%= `/task/${task.id}` %>" method="POST">
+    <input type="hidden" name="_method" value="put">
+    <input type="text" name="title" />
+    <input type="text" name="description" />
+    <input type="text" name="category" />
+    <input type="text" name="status" />
+    <button type="submit">Submit</button>
+  </form>
+  <% }) %>
+</body>
+
+</html>
